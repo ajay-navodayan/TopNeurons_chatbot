@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import logo from './assets/logo.png'
 import './App.css'
 
 const SESSION_ID = 'session_' + Math.random().toString(36).slice(2)
@@ -40,7 +41,8 @@ export default function App() {
     setMessages(prev => [...prev, { role: 'user', text: query }])
     setLoading(true)
     try {
-      const res = await fetch('/chat', {
+      const BACKEND = import.meta.env.VITE_API_URL || ''
+      const res = await fetch(`${BACKEND}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query, session_id: SESSION_ID }),
@@ -61,10 +63,10 @@ export default function App() {
   return (
     <div className="chat-container">
       <div className="chat-header">
-        <span className="logo">🎓</span>
-        <div>
-          <h2>TopNeurons AI Assistant</h2>
-        
+        <img src={logo} alt="TopNeurons" className="header-logo" />
+        <div className="header-text">
+          <h2>TopNeurons Foundation</h2>
+          <p>AI Assistant</p>
         </div>
       </div>
 

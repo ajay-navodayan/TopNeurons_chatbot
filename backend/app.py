@@ -2,7 +2,7 @@ import json
 import os
 import sys
 from datetime import datetime
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -10,8 +10,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 from rag import chat
 from config import DATA_DIR
 
-app = Flask(__name__, static_folder="../frontend")
-CORS(app)
+app = Flask(__name__)
+CORS(app, origins="*")
 
 LOG_FILE = os.path.join(DATA_DIR, "conversations.jsonl")
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -28,10 +28,6 @@ def log_conversation(session_id, query, answer):
             "answer": answer,
         }) + "\n")
 
-
-@app.route("/")
-def index():
-    return send_from_directory("../frontend", "index.html")
 
 
 @app.route("/chat", methods=["POST"])

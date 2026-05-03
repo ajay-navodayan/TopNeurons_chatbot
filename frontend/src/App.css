@@ -27,26 +27,32 @@ body {
 
 .chat-header {
   background: linear-gradient(135deg, #1a73e8, #0d47a1);
-  color: #fff;
-  padding: 16px 20px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.chat-header .logo {
-  font-size: 2rem;
+.header-logo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px 8px;
 }
 
-.chat-header h2 {
+.header-text h2 {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
 }
 
-.chat-header p {
+.header-text p {
   font-size: 0.75rem;
-  opacity: 0.8;
-  margin-top: 2px;
+  color: rgba(255,255,255,0.8);
+  margin: 0;
 }
 
 .chat-messages {

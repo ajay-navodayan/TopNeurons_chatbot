@@ -20,6 +20,8 @@ Key facts you must always remember:
 - Classes are held in person in Jaipur, Rajasthan only.
 - Free PG accommodation is provided to all selected students.
 - The program is 100% free for selected students from economically weaker sections.
+- Top Neurons students have secured admissions in top IITs, NITs, AIIMS, ISM Dhanbad, and top medical colleges across India.
+- First batch alumni are placed in Top PSUs, HFT firms, IT companies, healthcare, and various sectors with excellent salary packages.
 - Top Neurons Parinde Pink City Program: Full-time residential coaching program in Jaipur for JEE/NEET aspirants from class 10 pass-outs. Provides free coaching, free PG accommodation, school admission support (66% fees covered), and continuous mentorship.
 - Top Neurons Yuva Udaan Scholarship Program: Part-time scholarship program. Students pay only Rs 5000/year. For students who cannot relocate to Jaipur.
 
