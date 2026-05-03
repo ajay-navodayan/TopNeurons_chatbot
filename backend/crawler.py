@@ -14,7 +14,29 @@ HEADERS = {
 }
 
 # Only crawl content-rich sitemap types; skip student application pages (7000+)
-SITEMAP_WHITELIST = ["post-sitemap", "page-sitemap", "notice_board-sitemap", "testimony-sitemap"]
+SITEMAP_WHITELIST = ["post-sitemap", "page-sitemap"]
+
+# Skip these URL patterns — individual notice pages are repetitive noise
+URL_BLOCKLIST = ["/notice_board/", "/students_application/", "/photogallery/",
+                 "/slider/", "/testimony/", "/video/", "/partner/",
+                 "/logout/", "/login/", "/change-password/", "/forgot-password/",
+                 "/application-status/", "/application-details/"]
+
+# High-value pages to always crawl first
+PRIORITY_URLS = [
+    "https://www.topneurons.org/",
+    "https://www.topneurons.org/about-us/",
+    "https://www.topneurons.org/program-details/",
+    "https://www.topneurons.org/admission-exam/",
+    "https://www.topneurons.org/faqs/",
+    "https://www.topneurons.org/contact/",
+    "https://www.topneurons.org/notice-board/",
+    "https://www.topneurons.org/apply-for-scholarship/",
+    "https://www.topneurons.org/success-stories/",
+    "https://www.topneurons.org/get-involved/",
+    "https://www.topneurons.org/our-partners/",
+    "https://www.topneurons.org/legal/",
+]
 
 
 def _fetch(url):
@@ -72,17 +94,18 @@ def is_internal(url, base):
 
 
 def crawl(base_url=BASE_URL, max_pages=MAX_PAGES):
-    visited, queue = set(), [base_url]
-    pages = []
+    visited, pages = set(), []
 
-    # Try sitemap first
+    # Start with priority URLs, then sitemap
     sitemap_urls = get_sitemap_urls(base_url)
-    if sitemap_urls:
-        queue = sitemap_urls[:max_pages]
+    queue = PRIORITY_URLS + [u for u in sitemap_urls if u not in PRIORITY_URLS]
+    queue = queue[:max_pages * 2]  # buffer for blocked URLs
 
     while queue and len(visited) < max_pages:
         url = queue.pop(0)
         if url in visited:
+            continue
+        if any(block in url for block in URL_BLOCKLIST):
             continue
         try:
             r = _fetch(url)

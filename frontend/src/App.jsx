@@ -64,7 +64,7 @@ export default function App() {
         <span className="logo">🎓</span>
         <div>
           <h2>TopNeurons AI Assistant</h2>
-          <p>Powered by GROQ + RAG</p>
+        
         </div>
       </div>
 

@@ -54,7 +54,11 @@ def chat_endpoint():
 
     return jsonify({
         "answer": answer,
-        "sources": [{"url": c["url"], "section": c["section"]} for c in chunks],
+        "sources": list({
+            c["url"]: {"url": c["url"], "section": c["title"] or c["section"]}
+            for c in chunks
+            if c["url"] and not any(b in c["url"] for b in ["/notice_board/", "/%e"])
+        }.values()),
     })
 
 
