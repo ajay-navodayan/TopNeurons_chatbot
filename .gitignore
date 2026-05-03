@@ -19,8 +19,11 @@ env/
 data/raw_pages.json
 data/chunks.json
 data/conversations.jsonl
+data/labelled_dataset.csv
 vector_store/faiss.index
 vector_store/metadata.json
+!data/.gitkeep
+!vector_store/.gitkeep
 
 # Node / Frontend
 frontend/node_modules/
