@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import logo from './assets/logo.png'
 import './App.css'
 
 const SESSION_ID = 'session_' + Math.random().toString(36).slice(2)
@@ -61,10 +62,10 @@ export default function App() {
   return (
     <div className="chat-container">
       <div className="chat-header">
-        <span className="logo">🎓</span>
+        <img src={logo} alt="TopNeurons" className="header-logo" />
         <div>
-          <h2>TopNeurons AI Assistant</h2>
-          <p>Powered by GROQ + RAG</p>
+          <h2>TopNeurons Foundation</h2>
+          <p>AI Assistant</p>
         </div>
       </div>
 
